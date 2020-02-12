@@ -24,7 +24,7 @@ This looks familiar, right? Yes! It does, because it is identical to how a JSON 
 The equivalent JSON object for fruit_colors would look like this:
 
 ```
-"fruit_colors": {
+   "fruit_colors": {
    "apple":"red",
    "orange":"orange",
    "banana":"yellow"
@@ -37,6 +37,106 @@ In python, to obtain a value from our fruit_colors dictionary, we would do somet
 
 This would return us the value for the key 'banana' in our dictionary fruit_colors!
 
-Now that you have been refreshed on python dictionaries, feel free to try out the program and see how it works! It's a short and concise program
+Now, lets go back to the reponse that we got from earlier when we made a request to the Rates API:
+
+```
+{
+	"base": "EUR",
+	"rates": {
+		"GBP": 0.84325,
+		"HKD": 8.4658,
+		"IDR": 14919.11,
+		"ILS": 3.72,
+		"DKK": 7.4721,
+		"INR": 77.6945,
+		"CHF": 1.0667,
+		"MXN": 20.3563,
+		"CZK": 24.965,
+		"SGD": 1.5127,
+		"THB": 34.082,
+		"HRK": 7.459,
+		"MYR": 4.5059,
+		"NOK": 10.0953,
+		"CNY": 7.6025,
+		"BGN": 1.9558,
+		"PHP": 55.061,
+		"SEK": 10.5373,
+		"PLN": 4.2569,
+		"ZAR": 16.2331,
+		"CAD": 1.4495,
+		"ISK": 137.9,
+		"BRL": 4.6995,
+		"RON": 4.7693,
+		"NZD": 1.7055,
+		"TRY": 6.5775,
+		"JPY": 119.73,
+		"RUB": 69.3198,
+		"KRW": 1290.63,
+		"USD": 1.0901,
+		"HUF": 337.93,
+		"AUD": 1.626
+	},
+	"date": "2020-02-11"
+}
+```
+
+What would the python dictionary equivalent of this big JSON object look like? Hint: it would look *very* similar:
+
+```
+
+rates_dictionary = {
+	"base": "EUR",
+	"rates": {
+		"GBP": 0.84325,
+		"HKD": 8.4658,
+		"IDR": 14919.11,
+		"ILS": 3.72,
+		"DKK": 7.4721,
+		"INR": 77.6945,
+		"CHF": 1.0667,
+		"MXN": 20.3563,
+		"CZK": 24.965,
+		"SGD": 1.5127,
+		"THB": 34.082,
+		"HRK": 7.459,
+		"MYR": 4.5059,
+		"NOK": 10.0953,
+		"CNY": 7.6025,
+		"BGN": 1.9558,
+		"PHP": 55.061,
+		"SEK": 10.5373,
+		"PLN": 4.2569,
+		"ZAR": 16.2331,
+		"CAD": 1.4495,
+		"ISK": 137.9,
+		"BRL": 4.6995,
+		"RON": 4.7693,
+		"NZD": 1.7055,
+		"TRY": 6.5775,
+		"JPY": 119.73,
+		"RUB": 69.3198,
+		"KRW": 1290.63,
+		"USD": 1.0901,
+		"HUF": 337.93,
+		"AUD": 1.626
+	},
+	"date": "2020-02-11"
+}
+
+```
+What did we do? We *literally* just added `rates_dictionary =` to the beginning of that JSON block, as you can see, JSON and python dictionaries are considered identical.
+
+Now that we can think of JSON objects as python dictionaries, we know that we can access individual pieces of data just like we did with the fruit_colors dictionary. For example, if we wanted to access the base currency, we would do something like
+
+`base_currency = rates_dictionary['base']`
+
+If we wanted to access the exchange rate of BGN, we would do something like
+
+`bgn_rate = rates_dictionary['rates']['BGN']`
+
+The block `rates_dictionary['rates']` is what we call a *multilevel dictionary*.
+
+Now that you have been refreshed on python dictionaries and its relationship with JSON, feel free to try out the program and see how it works! It's a short and concise program
+
 
 <a href="https://github.com/Kav-K/HTV-API-Workshop/tree/part-3"><h3>Click here to go to Part 3 (or switch your branch to part-2)</h3></a>
