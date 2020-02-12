@@ -20,4 +20,4 @@ As you probably see, I have booked a 2 hour time slot for this workshop, but we 
 
 The actual content of the workshop is split into multiple parts, <b>each of the different parts are in their own git branch!</b> You can switch between the parts by simply switching the branch in the web UI, or by typing git checkout <branch name> in your command line. I will call out what parts we are on during the workshop and make sure everybody is following along so you do not need to worry too much about knowing when to switch branches in the actual workshop. You can also click one of the links below to switch to that specific part:
 
-<a href="https://github.com/Kav-K/HTV-API-Workshop/tree/master"><h3>Click here to go to Part 1 (or switch your branch to part-1)</h3></a>
+<a href="https://github.com/Kav-K/HTV-API-Workshop/tree/part-1"><h3>Click here to go to Part 1 (or switch your branch to part-1)</h3></a>
