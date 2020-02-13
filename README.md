@@ -138,5 +138,48 @@ The block `rates_dictionary['rates']` is what we call a *multilevel dictionary*.
 
 Now that you have been refreshed on python dictionaries and its relationship with JSON, feel free to try out the program and see how it works! It's a short and concise program
 
+# A POST request? What's a POST request?
+Now that we have some understanding of HTTP GET and how we would make such a request with python, lets quickly talk about POST requests. I know you guys want to get to google cloud already but that part will be very quick and simple once we get this stuff out of the way!
 
-<a href="https://github.com/Kav-K/HTV-API-Workshop/tree/part-3"><h3>Click here to go to Part 3 (or switch your branch to part-2)</h3></a>
+A POST request is a HTTP request that is used to submit data to an endpoint. Usually, they are used by APIs that require the user to submit some sort of data, usually, it will be data that cannot be submitted through a simple parameter in the URL. It is also considered slightly more *secure* because parameters are not sent directly in the URL.
+
+In a POST request, when you wish to send data or parameters to an endpoint/API, you put them in the *body* of the request, not in the request URL! POST requests also give you the flexibility to send different types of data, whereas in a GET request you are mostly limited to data in the form of a query string and parameters, you can send files, JSON, XML, binary, and much more with a POST request.
+
+To demonstrate an example of a POST request, we will use the silly but simple API called <a href="http://api.shoutcloud.io/V1/SHOUT">SHOUT CLOUD</a>. This stupid but fun API takes input from a POST request (text) and turns everything to upper case and returns it back to you! It serves literally no purpose but it will be a simple example for the purposes of our testing. It also lets us experiment with POSTing data that is not a query string, instead, we will be sending JSON in our POST request body to the API!
+
+As per their documentation, the shoutcloud API takes in an input JSON object that looks something like this:
+```
+{
+  "INPUT": "text to turn into upper case"
+}
+```
+This is simple, but notice that we are sending JSON-formatted to the api now, we are NOT doing something like `?input=text to turn into upper case`. This would be odd to do with a GET request, but since we are now using POST it should allow us to do it with no real difficulties!
+
+*Around this point, you should download the simple-python-post-example.py program from this branch to follow along with me better during the actual workshop.*
+
+Looking at the new python program, we can see that the only real difference is that our input data is now a dictionary, and that the method that we call on the requests library is `post()`, and we send the headers with our request as well, with `headers=request_headers` in the parameters of the post() function call.
+
+One major and important thing to note here is the headers! In our headers, we specified something called the `Content-Type`. This header tells the endpoint what type of data it will be receiving so it knows how to properly handle them, and it also structures and formats our request so that it can be processed without any issues! Right now, we have it set to `Content-Type: application/json`. This makes it so that our input data can be JSON-formatted (in fact, it HAS to be json formatted now!) What would happen if you changed the content type to something else? Or didn't send the headers at all? Try it out!
+
+Lets look at the RAW request that this program actually sends to the API:
+```
+POST /V1/SHOUT HTTP/1.1
+Host: api.shoutcloud.io
+Content-Type: application/json
+Cache-Control: no-cache
+
+{"INPUT": "Hello world!"}
+```
+This is the RAW request, this is what the request is defined as in the actual Hyper Text Transfer Protocol! The keyword at the very beginning specifies what TYPE of request it is, in this case it is `POST`, and then the text after it specifies the path to make the request to and the protocol version to use. The `host` header specifies the actual server to make the request to, and the `Content-Type` specifies what type of data is in the request. Next, we see something interesting, after all of the headers, there is a space and then our actual request body! As you can see, the input 'parameters' are not in the URL and are instead in a section after the headers, which we refer to as the body of the request. This is advantageous because we can put all different types of data in the body of a POST request, it doesn't even have to be text! POST requests even support special characters. In a way, POST requests are superior because GET requests are character limited, format limited, and have a whole multitude more limitations.
+
+Lets quickly also look at the raw HTTP request that we made to the Rates API earlier, just for sake of comparison:
+```
+GET /api/latest?base=CAD HTTP/1.1
+Host: api.ratesapi.io
+Content-Type: application/json
+Cache-Control: no-cache
+```
+As you can see, our input (base=CAD) is in the path section! There is no body.
+
+Now, lets finally get started with Google Cloud
+<a href="https://github.com/Kav-K/HTV-API-Workshop/tree/part-3"><h3>Click here to go to Part 3 (or switch your branch to part-3)</h3></a>
