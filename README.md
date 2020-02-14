@@ -93,6 +93,8 @@ Now, before we start programatically interacting with it, type that link into yo
 
 Familiar, right? That's a nice, clean, JSON response like earlier! Now that we know about JSON we are also ready to start using it programatically!
 
+Now, you're thinking-- what about the place details? This only gives us the address and name and some pictures of the place! Well, with some digging around in the documentation (again, the documentation IS THE MOST IMPORTANT THING) we find that they also offer a "Place Details" api, which has an endpoint of `https://maps.googleapis.com/maps/api/place/details/output?parameters`. What do we do? That's right! We make a second API call using the details we got from the first one! APIs within APIs? The API matrix? (If you came here for good jokes you're in the wrong place)
+
 The program for making queries with python will be written and demonstrated during the physical workshop! If you aren't feeling up to coming, or you are in the workshop right now and you're bored, feel free to download the program parse.py from this branch! (It is the final product)
 
 
