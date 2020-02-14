@@ -3,7 +3,7 @@ import json
 
 SEARCH_ENDPOINT = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 DETAILS_ENDPOINT = "https://maps.googleapis.com/maps/api/place/details/json"
-API_KEY = "KEY"
+API_KEY = "AIzaSyBNptDO4MXjTv7C-yEaKi1nBCnN1uZPcbU"
 #This is just some safe default headers to make sure our connection doesnt somehow get dropped! Ignore these for now
 headers = {
 
@@ -41,6 +41,8 @@ while True:
 
             details = api_details(result['place_id'])
             print("Hours: ")
+
+            if 'result' not in details: continue
 
             #These if statements check if the key is actually in the JSON object, AKA they check if the place actually
             # has opening hours, or has reviews before trying to access them! This is a safe practice
